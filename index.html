@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href="https://fonts.google.com/specimen/Epilogue">
+  <link rel="stylesheet" href="styles.css">
+  <title>Frontend Mentor | Intro section with dropdown navigation</title>
+</head>
+<body>
+  <nav class="navbar">
+    <!-- Logo --> 
+    <div class="logo">snap</div>
+
+    <!-- Nav menu -->
+    <div class="nav-container">
+      <ul class="nav-links menu-left">
+        <!-- Dropdown for Features -->
+        <li class="features">
+          <a href="#">Features  <img src="images/icon-arrow-down.svg" alt="Arrow Down" class="arrow"></a>
+          <ul class="dropdown">
+            <li><a href="#"><img src="images/icon-todo.svg" alt="Todo List"> Todo List</a></li>
+            <li><a href="#"><img src="images/icon-calendar.svg" alt="Calendar"> Calendar</a></li>
+            <li><a href="#"><img src="images/icon-reminders.svg" alt="Reminders"> Reminders</a></li>
+            <li><a href="#"><img src="images/icon-planning.svg" alt="Planning"> Planning</a></li>
+          </ul>
+        </li>
+        <!-- Dropdown for Company -->
+        <li class="company">
+          <a href="#">Company  <img src="images/icon-arrow-down.svg" alt="Arrow Down" class="arrow"></a>
+          <ul class="dropdown">
+            <li><a href="#">History</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </li>
+        <!-- Non-dropdown links -->
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+      
+      <ul class="nav-links menu-right">
+        <!-- Login and Register links -->
+        <li class="login"><a href="#">Login</a></li>
+        <li class="register"><a href="#">Register</a></li>
+      </ul>
+    </div>
+
+    <!-- Hamburger Menu Icon -->
+    <button class="hamburger-menu" aria-label="Toggle navigation">
+      <img src="images/centered-justification_17654.png" alt="Hamburger Menu">
+    </button>
+  </nav>
+
+  <!-- Main content -->
+  <div class="container">
+    <div class="left">
+      <p class="title">Make remote work</p>
+      <p class="description">Get your team in sync, no matter your location.<br>Streamline processes, create team rituals, and<br>watch productivity soar.</p>
+      <a class="learn-more" href="#">Learn more</a><br>
+      <div class="client-logos">
+        <img class="client-logo" src="images/client-databiz.svg">
+        <img class="client-logo" src="images/client-audiophile.svg">
+        <img class="client-logo" src="images/client-meet.svg">
+        <img class="client-logo" src="images/client-maker.svg">
+      </div>
+    </div>
+    <div class="right">
+      <img src="images/image-hero-desktop.png" class="hero" alt="Hero Image">
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburgerMenu = document.querySelector('.hamburger-menu');
+      const navLinks = document.querySelector('.nav-links');
+      const dropdowns = document.querySelectorAll('.features, .company');
+
+      hamburgerMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+
+      dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('a');
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          dropdown.classList.toggle('open');
+        });
+      });
+
+      document.addEventListener('click', (event) => {
+        dropdowns.forEach(dropdown => {
+          if (!dropdown.contains(event.target)) {
+            dropdown.classList.remove('open');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
